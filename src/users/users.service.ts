@@ -7,7 +7,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 export class UsersService {
   constructor(@InjectRepository(User) private userRepo: Repository<User>) {}
 
-  async findByUsername(username: string): Promise<User | undefined> {
+  async findByUsername(username: string): Promise<User | null | undefined> {
     return this.userRepo.findOne({ where: { username } });
   }
 
